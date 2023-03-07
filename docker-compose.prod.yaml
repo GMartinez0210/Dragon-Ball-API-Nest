@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  dragon-ball-app:
+    depends_on:
+      - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: dragon-ball-docker
+    container_name: dragon-ball-app
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - "4000:4000"
+    # working_dir: /var/www/dragon-ball
+    environment:
+      MONGODB_URI: ${MONGODB_URI}
+    # volumes:
+    #   - ./:/var/www/dragon-ball
+
+  db:
+    image: mongo:5
+    container_name: mongo-dragonBall
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: dragonBallDB
+    volumes:
+      - ./mongo:/data/db
