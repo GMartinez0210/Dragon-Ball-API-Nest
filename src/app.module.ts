@@ -6,10 +6,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ControllerModule } from './controllers/controller.module';
 import { UtilModule } from './utils/util.module';
 import { CommonModule } from './common/common.module';
+import { ConfigModule } from '@nestjs/config';
+import { EnvConfig } from './config/env.config';
+import { JoiValidationSchema } from './config/joi.validation';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/dragonBallDB'),
+    ConfigModule.forRoot({
+      load: [EnvConfig],
+      validationSchema: JoiValidationSchema,
+    }),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../public'),
     }),

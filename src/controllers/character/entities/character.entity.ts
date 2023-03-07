@@ -12,15 +12,12 @@ export class Character extends Document {
     unique: true,
     index: true,
     required: true,
-    set: (name: string) => name.toLowerCase(),
+    set: (name: string) => name.toLowerCase().trim(),
   })
   name: string;
 
   @Prop()
   image: string;
-
-  @Prop()
-  power: number;
 
   @Prop({
     type: Types.ObjectId,

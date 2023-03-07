@@ -4,6 +4,7 @@ import { PlanetModule } from './planet/planet.module';
 import { UniverseModule } from './universe/universe.module';
 import { SagaModule } from './saga/saga.module';
 import { BreedModule } from './breed/breed.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -12,7 +13,9 @@ import { BreedModule } from './breed/breed.module';
     UniverseModule,
     SagaModule,
     BreedModule,
+    SeedModule,
   ],
   providers: [],
+  controllers: [],
 })
 export class ControllerModule {}

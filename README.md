@@ -23,3 +23,10 @@ npm install @nestjs/cli
 ```
 docker-compose up -d
 ```
+
+5.- Copy the `.env.template` and fill it using you env variables
+
+6.- Run the nest application
+```
+npm run start:dev
+```

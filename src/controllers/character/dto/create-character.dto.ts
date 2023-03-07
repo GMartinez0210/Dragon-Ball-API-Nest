@@ -1,18 +1,7 @@
-import {
-  IsString,
-  IsNumber,
-  IsPositive,
-  MinLength,
-  IsUrl,
-  ValidateNested,
-} from 'class-validator';
+import { IsString, MinLength, IsUrl, ValidateNested } from 'class-validator';
 
 import { Type } from 'class-transformer';
 
-import { Breed } from 'src/controllers/breed/entities/breed.entity';
-import { Planet } from 'src/controllers/planet/entities/planet.entity';
-import { Saga } from 'src/controllers/saga/entities/saga.entity';
-import { Universe } from 'src/controllers/universe/entities/universe.entity';
 import { CreateBreedDto } from 'src/controllers/breed/dto/create-breed.dto';
 import { CreateSagaDto } from 'src/controllers/saga/dto/create-saga.dto';
 import { CreatePlanetDto } from 'src/controllers/planet/dto/create-planet.dto';
@@ -26,23 +15,19 @@ export class CreateCharacterDto {
   @IsUrl()
   image: string;
 
-  @IsNumber({ allowNaN: false })
-  @IsPositive()
-  power: number;
-
   @ValidateNested()
   @Type(() => CreateBreedDto)
-  breed: Breed;
+  breed: CreateBreedDto;
 
   @ValidateNested()
   @Type(() => CreateSagaDto)
-  saga: Saga;
+  saga: CreateSagaDto;
 
   @ValidateNested()
   @Type(() => CreatePlanetDto)
-  planet: Planet;
+  planet: CreatePlanetDto;
 
   @ValidateNested()
   @Type(() => CreateUniverseDto)
-  universe: Universe;
+  universe: CreateUniverseDto;
 }

@@ -7,7 +7,7 @@ export class Universe extends Document {
     unique: true,
     index: true,
     required: true,
-    set: (name: string) => name.toUpperCase(),
+    set: (name: string) => name.toLowerCase().trim(),
   })
   name: string;
 

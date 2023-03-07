@@ -7,7 +7,7 @@ export class Planet extends Document {
     unique: true,
     index: true,
     required: true,
-    set: (name: string) => name.toLowerCase(),
+    set: (name: string) => name.toLowerCase().trim(),
   })
   name: string;
 
